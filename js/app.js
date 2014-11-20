@@ -91,11 +91,30 @@ $(function(){
   map.addLayer(baseLayer);
 
 
+  function addCursorInteraction(layer) {
+    var hovers = [];
+
+    layer.bind('featureOver', function(e, latlon, pxPos, data, layer) {
+      hovers[layer] = 1;
+      if(_.any(hovers)) {
+        $('#map').css('cursor', 'pointer');
+      }
+    });
+
+    layer.bind('featureOut', function(m, layer) {
+      hovers[layer] = 0;
+      if(!_.any(hovers)) {
+        $('#map').css('cursor', 'auto');
+      }
+    });
+  }
+
 
   cartodb.createLayer(map, 'http://localdata.cartodb.com/api/v2/viz/fce8ff12-7011-11e4-92e6-0e4fddd5de28/viz.json')
     .addTo(map)
     .on('done', function(layer) {
       console.log('done');
+      addCursorInteraction(layer);
     })
     .on('error', function(err) {
       console.log("some error occurred: " + err);
@@ -112,8 +131,6 @@ $(function(){
         if(data.total_rows === 0) { return; }
 
         var rows = data.rows;
-        var text = JSON.stringify(rows);
-        console.log("textifying", text);
 
         var html = permitsTemplate({
           job_types: JOB_TYPES,
@@ -148,7 +165,7 @@ $(function(){
     var counts = [];
 
     _.each(data.rows, function(type) {
-      labels.push(type.permit_type);
+      labels.push(PERMIT_TYPES[type.permit_type]);
       counts.push(type.count);
     });
 
