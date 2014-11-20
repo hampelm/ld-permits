@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NYC Permits</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+ -->
+    <link href="css/app.css" rel="stylesheet" media="screen">
+
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/themes/css/cartodb.css" />
+  </head>
+  <body>
+    <div id="sidebar" class="bar">
+      <img src="https://s3.amazonaws.com/localdata-static/img/logo.png" alt="LocalData" width="100%">
+      <div class="in">
+        <h1>NYC Permit Explorer</h1>
+        <input id="address-search" placeholder="address">
+
+        <div class="permit-types"></div>
+      </div>
+    </div>
+
+    <div id="map" class="bar"></div>
+
+    <div id="infowindow" class="bar">
+      <div class="in">
+        <div id="cartodata"></div>
+      </div>
+    </div>
+
+    <script type="text/template" id="template-permit-types">
+      <% _.each(types, function(type) {  %>
+        <div>
+        <%= legend[type.permit_type] %>
+        <%= type.count %>
+        </div>
+      <% }); %>
+
+      <canvas id="chart-permit-types" height="300"></canvas>
+    </script>
+
+
+    <script type="text/template" id="template-permits">
+      <h3><%= permits[0].house %> <%= permits[0].street_name.toLowerCase() %></h3>
+
+      <img src="//maps.googleapis.com/maps/api/streetview?size=500x200&amp;location=<%= permits[0].house %> <%= permits[0].street_name %>,  <%= permits[0].borough %>, <%= permits[0].city_state_zip %>City&amp;key=AIzaSyCO654zBIabvjSOV4Ys59Pku8pmzM387ps" width="100%" class="streetview">
+
+      <% _.each(permits, function(permit) {  %>
+        <div class="permit">
+          <h4 class="type"><%= permit_types[permit.permit_type] %></h4>
+
+          <div><%= permit.permit_status %> (<%= permit.filing_status %>)</div>
+
+          <div>Issued: <%= permit.issuance_date %></div>
+          <div>Expires: <%= permit.expiration_date %></div>
+
+          <div>Owner: <%= permit.owner_s_first_last_name %></div>
+          <div>Owner&apos;s business: <%= permit.owner_s_business_name %></div>
+          <div>Permittee: <%= permit.permittee_s_business_name %></div>
+
+
+
+          <!--
+          Subtype: <%= permit_subtypes[permit.permit_subtype] %>
+          Job type: <%= job_types[permit.job_type] %>
+          Job start: <%= permit.job_start_date %>
+          -->
+
+
+          <div class="job-id">Job: <%= permit.job %></div>
+        </div>
+      <% }); %>
+    </script>
+
+
+    <script type="text/template" id="response-template">
+    </script>
+
+    <script type="text/template" id="permit-template">
+    </script>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.4/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.1-beta.2/Chart.min.js"></script>
+
+
+    <!--<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>-->
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/app.js"></script>
+
+  </body>
+</html>

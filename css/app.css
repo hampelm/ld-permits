@@ -1,0 +1,82 @@
+@font-face {
+  font-family: "NeuzeitOfficeW01-Regula";
+  src: url("http://localdata-static.s3-website-us-east-1.amazonaws.com/fonts/neuzeit/regular/regular.eot?#iefix");
+  src: url("http://localdata-static.s3-website-us-east-1.amazonaws.com/fonts/neuzeit/regular/regular.eot?#iefix") format("eot"), url("http://localdata-static.s3-website-us-east-1.amazonaws.com/fonts/neuzeit/regular/regular.woff") format("woff"), url("http://localdata-static.s3-website-us-east-1.amazonaws.com/fonts/neuzeit/regular/regular.ttf") format("truetype"), url("http://localdata-static.s3-website-us-east-1.amazonaws.com/fonts/neuzeit/regular/regular.svg#85050462-ab1f-4478-a289-36eed1d3c53f") format("svg"); }
+@font-face {
+  font-family: "Neuzeit Office W01 Bold";
+  src: url("http://localdata-static.s3-website-us-east-1.amazonaws.com/fonts/neuzeit/bold/bold.eot?#iefix");
+  src: url("http://localdata-static.s3-website-us-east-1.amazonaws.com/fonts/neuzeit/bold/bold.eot?#iefix") format("eot"), url("http://localdata-static.s3-website-us-east-1.amazonaws.com/fonts/neuzeit/bold.woff") format("woff"), url("http://localdata-static.s3-website-us-east-1.amazonaws.com/fonts/neuzeit/bold/bold.ttf") format("truetype"), url("http://localdata-static.s3-website-us-east-1.amazonaws.com/fonts/neuzeit/bold/bold.svg#d4cb246e-742d-4269-9f6a-901a050ff03f") format("svg"); }
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: NeuzeitOfficeW01-Regula, Helvetica Neue, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1em;
+  color: #45403e;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+h1 {
+  font-family: Neuzeit Office W01 Bold, Helvetica Neue, sans-serif;
+  text-align: justify;
+  -moz-text-align-last: justify;
+  text-align-last: justify;
+  text-transform: uppercase;
+}
+
+h3 {
+  text-transform: capitalize;
+  font-size: 24px;
+}
+
+h4 {
+  font-family: Neuzeit Office W01 Bold, Helvetica Neue, sans-serif;
+}
+
+.bar {
+  position: fixed;
+  height: 100vh;
+}
+
+#sidebar {
+  width: 20%;
+  border-right: 1px solid #eeebe9;
+}
+
+#infowindow {
+  width: 30%;
+  left: 20%;
+}
+
+#map {
+  left: 50%;
+  width: 50%;
+}
+
+.bar .in {
+  padding: 20px;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.permit {
+  padding: 20px 0;
+  border-bottom: 1px solid #eeebe9;
+}
+
+  .permit div {
+    text-transform: capitalize;
+  }
+
+  .job-id {
+    font-size: .9em;
+    text-transform: uppercase;
+    color: #b7aba5;
+    padding-top: 1em;
+  }
