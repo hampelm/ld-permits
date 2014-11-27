@@ -90,7 +90,7 @@ $(function(){
 
   // Set up the map --------------
   // Detroit: 42.42, -83.02
-  var map = L.map('map').setView([40.744679,-73.948542], 16);
+  var map = L.map('map').setView([40.744679,-73.948542], 12);
 
   var baseLayer = L.tileLayer('http://a.tiles.mapbox.com/v3/matth.map-yyr7jb6r/{z}/{x}/{y}.png');
   map.addLayer(baseLayer);
