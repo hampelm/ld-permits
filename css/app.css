@@ -30,18 +30,28 @@ h1 {
   text-transform: uppercase;
 }
 
+h2 {
+  font-family: Neuzeit Office W01 Bold, Helvetica Neue, sans-serif;
+}
+
 h3 {
   text-transform: capitalize;
   font-size: 24px;
+  margin-bottom: 1em;
 }
 
 h4 {
   font-family: Neuzeit Office W01 Bold, Helvetica Neue, sans-serif;
 }
 
+ol, ul, li {
+  list-style-position: inside;
+}
+
 .bar {
   position: fixed;
   height: 100vh;
+  overflow: scroll;
 }
 
 #sidebar {
@@ -79,4 +89,8 @@ h4 {
     text-transform: uppercase;
     color: #b7aba5;
     padding-top: 1em;
+  }
+
+  .subtype {
+    margin-bottom: 1em;
   }
